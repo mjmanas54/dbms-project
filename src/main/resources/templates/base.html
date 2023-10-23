@@ -30,20 +30,26 @@
                         <li class="nav-item mx-2">
                             <a class="nav-link active" aria-current="page" href="#">Offer</a>
                         </li>
+
                         <li class="nav-item dropdown mx-2">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Location
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
+                            <div class="input-group">
+                                <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                    <option selected>Location</option>
+                                    <option value="1">Varanasi</option>
+                                    <option value="2">Delhi</option>
+                                    <option value="3">Bangalore</option>
+                                </select>
+                            </div>
                         </li>
                     </ul>
-                    <form class="d-flex search-bar" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search for restaurants and food" aria-label="Search">
+
+                    <form class="d-flex search-bar search-container" role="search">
+                        <input onkeyup="search()" id="search-input" class="form-control me-2" type="search" placeholder="Search for restaurants and food" aria-label="Search">
+                        <div class="search-result p-3" id="search-result">
+                            <div id="restaurants"></div>
+                            <hr>
+                            <div id="items"></div>
+                        </div>
                         <button type="submit" class="animbtn bg-light">
                             <a
                                     class="animbtnlink"

@@ -65,4 +65,11 @@ public class ItemJdbcDao {
         params.put("RestaurantId", id);
         return namedParameterJdbcTemplate.query(sql, params, userRowMapper);
     }
+
+    public List<Item> getItemsWithNameLike(String name) {
+        String sql = "SELECT * FROM Items WHERE ItemName LIKE :ItemName";
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("ItemName", "%"+name+"%");
+        return namedParameterJdbcTemplate.query(sql, params, userRowMapper);
+    }
 }

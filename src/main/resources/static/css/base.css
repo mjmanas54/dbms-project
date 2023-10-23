@@ -110,3 +110,19 @@ ul{
     display: flex;
 }
 
+#search-input{
+    position: relative;
+}
+.search-result{
+    position: absolute;
+    margin-top: 4%;
+    width: 30%;
+    display: none;
+    background-color: white;
+    max-height: 450%;
+    overflow-y: scroll;
+}
+.show{
+    display: block;
+}
+
