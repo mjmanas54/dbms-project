@@ -18,11 +18,14 @@ const search=()=>{
     const restaurants = document.getElementById("restaurants");
     const items = document.getElementById("items");
     const searchResults = document.getElementById("search-result");
-
+    const city = document.getElementById("city");
+    const selectedText = city.value;
     let query = searchElement.value;
+    query += "_";
+    query += selectedText;
     let val1 = false;
     let val2 = false;
-    if(query=="") {
+    if(query[0]=='_') {
         searchResults.classList.remove("show");
     }else{
         let url = `http://localhost:8090/search/${query}`;
