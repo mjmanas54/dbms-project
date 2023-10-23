@@ -23,7 +23,8 @@ public class SearchController {
     @GetMapping("search/{query}")
     public ResponseEntity<?> search(@PathVariable("query") String query){
         System.out.println(query);
-        List<Restaurant> restaurants = this.restaurantJdbcDao.getRestaurantWithNameLike(query);
+        String[] queries = query.split("_");
+        List<Restaurant> restaurants = this.restaurantJdbcDao.getRestaurantWithNameLikeAndCity(queries[0],queries[1]);
         System.out.println(restaurants);
         return ResponseEntity.ok(restaurants);
     }
@@ -31,7 +32,8 @@ public class SearchController {
     @GetMapping("searchItem/{query}")
     public ResponseEntity<?> searchItem(@PathVariable("query") String query){
         System.out.println(query);
-        List<Item> items = this.itemJdbcDao.getItemsWithNameLike(query);
+        String[] queries = query.split("_");
+        List<Item> items = this.itemJdbcDao.getItemsWithNameLikeAndCity(queries[0],queries[1]);
         System.out.println(items);
         return ResponseEntity.ok(items);
     }

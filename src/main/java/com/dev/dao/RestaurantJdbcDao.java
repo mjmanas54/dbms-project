@@ -79,5 +79,13 @@ public class RestaurantJdbcDao {
         return namedParameterJdbcTemplate.query(sql, params, userRowMapper);
     }
 
+    public List<Restaurant> getRestaurantWithNameLikeAndCity(String name,String city){
+        String sql = "SELECT * FROM Restaurant WHERE RestaurantName LIKE :RestaurantName AND City=:City";
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("RestaurantName", "%"+name+"%");
+        params.put("City",city);
+        return namedParameterJdbcTemplate.query(sql, params, userRowMapper);
+    }
+
     
 }

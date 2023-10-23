@@ -66,10 +66,11 @@ public class ItemJdbcDao {
         return namedParameterJdbcTemplate.query(sql, params, userRowMapper);
     }
 
-    public List<Item> getItemsWithNameLike(String name) {
-        String sql = "SELECT * FROM Items WHERE ItemName LIKE :ItemName";
+    public List<Item> getItemsWithNameLikeAndCity(String name,String city) {
+        String sql = "SELECT * FROM Items WHERE ItemName LIKE :ItemName AND RestaurantId IN (SELECT r.RestaurantId FROM restaurant r  WHERE r.City = :City)";
         HashMap<String, Object> params = new HashMap<>();
         params.put("ItemName", "%"+name+"%");
+        params.put("City",city);
         return namedParameterJdbcTemplate.query(sql, params, userRowMapper);
     }
 }
